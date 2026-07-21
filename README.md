@@ -1,15 +1,12 @@
-# DrawUserBundle
+DrawUserBundle
+==============
 
 ## Enable 2FA for admin
-
 1. Install and configure scheb/2fa-bundle
-
-```bash
+```
 composer ruquire scheb/2fa-bundle scheb/2fa-totp scheb/2fa-qr-code
 ```
-
 config/packages/scheb_2fa.yaml
-
 ```yaml
 scheb_two_factor:
     totp:
@@ -21,9 +18,7 @@ scheb_two_factor:
         - Symfony\Component\Security\Core\Authentication\Token\UsernamePasswordToken
         - Symfony\Component\Security\Guard\Token\PostAuthenticationGuardToken
 ```
-
 config/routes/scheb_2fa.yaml
-
 ```yaml
 admin_2fa_login:
     path: /admin/2fa
@@ -33,10 +28,8 @@ admin_2fa_login:
 admin_2fa_login_check:
     path: /admin/2fa_check
 ```
-
-1. Enable two-factor authentication per firewall and configure access_control for the 2fa routes:
+2. Enable two-factor authentication per firewall and configure access_control for the 2fa routes:
 config/packages/security.yaml
-
 ```yaml
 security:
     firewalls:
@@ -50,12 +43,10 @@ security:
         - { path: ^/admin/2fa, role: IS_AUTHENTICATED_2FA_IN_PROGRESS }
         - { path: ^/admin/logout$, role: IS_AUTHENTICATED_ANONYMOUSLY }
 ```
-
-1. Implements Draw\Bundle\UserBundle\Security\TwoFactorAuthenticationUserInterface and
+3. Implements Draw\Bundle\UserBundle\Security\TwoFactorAuthenticationUserInterface and 
 use \Draw\Bundle\UserBundle\Entity\TwoFactorAuthenticationUserTrait for User entity.
 Migrate database changes.
-2. Enable 2FA in DrawUserBundle.
-
+4. Enable 2FA in DrawUserBundle.
 ```yaml
 draw_user:
     sonata:
