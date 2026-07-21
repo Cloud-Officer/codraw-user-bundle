@@ -119,7 +119,7 @@ class UserRequestInterceptorListener implements EventSubscriberInterface
     {
         if ($this->firewallMap) {
             $firewallConfig = $this->firewallMap->getFirewallConfig($request);
-            if ($firewallConfig->isStateless()) {
+            if ($firewallConfig?->isStateless()) {
                 return null;
             }
         }

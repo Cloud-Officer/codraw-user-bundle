@@ -26,7 +26,7 @@ class NewUserSendEmailMessageHandler
     {
         $user = $this->drawUserEntityRepository->find($message->getUserId());
 
-        if (!method_exists($user, 'getEmail') || empty($user->getEmail())) {
+        if (null === $user || !method_exists($user, 'getEmail') || empty($user->getEmail())) {
             return;
         }
 

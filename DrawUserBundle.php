@@ -14,7 +14,7 @@ class DrawUserBundle extends Bundle
     {
         $container->addCompilerPass(new ExcludeDoctrineEntitiesCompilerPass());
 
-        if ($container->hasExtension('security')) {
+        if (class_exists(AdminLoginFactory::class) && $container->hasExtension('security')) {
             /** @var SecurityExtension $extension */
             $extension = $container->getExtension('security');
             $extension->addAuthenticatorFactory(new AdminLoginFactory());

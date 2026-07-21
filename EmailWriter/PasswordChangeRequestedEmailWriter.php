@@ -2,12 +2,12 @@
 
 namespace Draw\Bundle\UserBundle\EmailWriter;
 
+use Doctrine\ORM\EntityRepository;
 use Draw\Bundle\UserBundle\Email\PasswordChangeRequestedEmail;
 use Draw\Bundle\UserBundle\Entity\SecurityUserInterface;
 use Draw\Bundle\UserBundle\Message\RedirectToSecuredRouteMessage;
 use Draw\Component\Mailer\EmailWriter\EmailWriterInterface;
 use Draw\Component\Messenger\ManualTrigger\ManuallyTriggeredMessageUrlGenerator;
-use Symfony\Component\Security\Core\User\UserProviderInterface;
 
 class PasswordChangeRequestedEmailWriter implements EmailWriterInterface
 {
@@ -16,9 +16,12 @@ class PasswordChangeRequestedEmailWriter implements EmailWriterInterface
         return ['compose' => 0];
     }
 
+    /**
+     * @param EntityRepository<SecurityUserInterface> $drawUserEntityRepository
+     */
     public function __construct(
         private ManuallyTriggeredMessageUrlGenerator $messageUrlGenerator,
-        private UserProviderInterface $userProvider,
+        private EntityRepository $drawUserEntityRepository,
     ) {
     }
 
@@ -29,7 +32,7 @@ class PasswordChangeRequestedEmailWriter implements EmailWriterInterface
         }
 
         if (!$email->getCallToActionLink()) {
-            $user = $this->userProvider->loadUserByIdentifier($email->getUserId());
+            $user = $this->drawUserEntityRepository->find($email->getUserId());
 
             $parameters = [];
             if ($user instanceof SecurityUserInterface) {

@@ -31,7 +31,7 @@ class FlashUserFeed implements UserFeedInterface
             if ($session instanceof Session) {
                 $session->getFlashBag()->add(
                     $type,
-                    $this->translator->trans($message, $parameters, $domain)
+                    $this->translator?->trans($message, $parameters, $domain) ?? $message
                 );
             }
         } catch (SessionNotFoundException) {

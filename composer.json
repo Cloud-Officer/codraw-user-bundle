@@ -9,7 +9,7 @@
         "user"
     ],
     "require": {
-        "php": ">=8.5",
+        "php": "^8.5",
         "ext-ctype": "*",
         "ext-iconv": "*",
         "doctrine/common": "^3.1",
@@ -17,8 +17,10 @@
         "doctrine/orm": "^3.6",
         "codraw/contracts": "^0.39",
         "codraw/core": "^0.39",
+        "codraw/security": "^0.39",
         "ramsey/uuid": "^4.2",
         "symfony/framework-bundle": "^6.4.0",
+        "symfony/password-hasher": "^6.4.0",
         "symfony/security-core": "^6.4.0",
         "symfony/security-http": "^6.4.0",
         "symfony/yaml": "^6.4.0"
@@ -27,7 +29,6 @@
         "codraw/framework-extra-bundle": "^0.39",
         "codraw/mailer": "^0.39",
         "codraw/messenger": "^0.39",
-        "codraw/security": "^0.39",
         "codraw/tester": "^0.39",
         "endroid/qr-code": "^6.0",
         "firebase/php-jwt": "^6.1",
@@ -36,12 +37,22 @@
         "scheb/2fa-totp": "^7.6"
     },
     "suggest": {
+        "codraw/mailer": "Required to use the email writers (email_writers) and the onboarding/password-change emails",
         "codraw/messenger": "By using this bundle 'call to action' link will be generated. Other wise you need to do it by hand",
+        "codraw/open-api": "Required to use the connection-tokens api controller",
         "codraw/post-office-bundle": "This allow to write and send email via email writer services.",
+        "codraw/sonata-integration-bundle": "Required to register the admin login authenticator factory",
         "endroid/qr-code": "Use for the 2FA secret code generation using QR code",
         "firebase/php-jwt": "Use for the jwt connection token system",
         "scheb/2fa-bundle": "Use for the 2FA",
-        "scheb/2fa-totp": "Use to enable TOTP methdon for 2FA"
+        "scheb/2fa-totp": "Use to enable TOTP methdon for 2FA",
+        "symfony/console": "Required to use the refresh user locks command (account_locker)",
+        "symfony/expression-language": "Required to use the connection-tokens api controller",
+        "symfony/mailer": "Required to send the onboarding, password change and 2FA emails",
+        "symfony/messenger": "Required for the account locker, onboarding and password change enforcer message handling",
+        "symfony/security-bundle": "Required for the firewall aware request interception and the admin login authenticator factory",
+        "symfony/twig-bridge": "Required to use the templated emails",
+        "symfony/validator": "Required to use the validation constraints of the user entity traits and DTOs"
     },
     "minimum-stability": "dev",
     "prefer-stable": true,

@@ -33,7 +33,7 @@ trait ConfigurationTrait
     {
         $enabledProviders = $this->getTwoFactorAuthenticationEnabledProviders();
 
-        if (!\in_array($enabledProviders, $this->twoFactorAuthenticationEnabledProviders, true)) {
+        if (!\in_array($provider, $enabledProviders, true)) {
             $enabledProviders[] = $provider;
 
             $this->setTwoFactorAuthenticationEnabledProviders($enabledProviders);

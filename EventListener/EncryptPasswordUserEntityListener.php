@@ -44,7 +44,7 @@ class EncryptPasswordUserEntityListener
             case $user instanceof PasswordChangeUserInterface && $user->getNeedChangePassword():
                 break;
             default:
-                $user->setPlainPassword(uniqid());
+                $user->setPlainPassword(bin2hex(random_bytes(16)));
                 break;
         }
 
