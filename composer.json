@@ -1,5 +1,5 @@
 {
-    "name": "draw/user-bundle",
+    "name": "codraw/user-bundle",
     "description": "",
     "license": "MIT",
     "type": "symfony-bundle",
@@ -15,8 +15,8 @@
         "doctrine/common": "^3.1",
         "doctrine/doctrine-bundle": "^2.5",
         "doctrine/orm": "^3.6",
-        "draw/contracts": "^0.39",
-        "draw/core": "^0.39",
+        "codraw/contracts": "^0.39",
+        "codraw/core": "^0.39",
         "ramsey/uuid": "^4.2",
         "symfony/framework-bundle": "^6.4.0",
         "symfony/security-core": "^6.4.0",
@@ -24,11 +24,11 @@
         "symfony/yaml": "^6.4.0"
     },
     "require-dev": {
-        "draw/framework-extra-bundle": "^0.39",
-        "draw/mailer": "^0.39",
-        "draw/messenger": "^0.39",
-        "draw/security": "^0.39",
-        "draw/tester": "^0.39",
+        "codraw/framework-extra-bundle": "^0.39",
+        "codraw/mailer": "^0.39",
+        "codraw/messenger": "^0.39",
+        "codraw/security": "^0.39",
+        "codraw/tester": "^0.39",
         "endroid/qr-code": "^6.0",
         "firebase/php-jwt": "^6.1",
         "phpunit/phpunit": "^11.3 || ^12.0",
@@ -36,8 +36,8 @@
         "scheb/2fa-totp": "^7.6"
     },
     "suggest": {
-        "draw/messenger": "By using this bundle 'call to action' link will be generated. Other wise you need to do it by hand",
-        "draw/post-office-bundle": "This allow to write and send email via email writer services.",
+        "codraw/messenger": "By using this bundle 'call to action' link will be generated. Other wise you need to do it by hand",
+        "codraw/post-office-bundle": "This allow to write and send email via email writer services.",
         "endroid/qr-code": "Use for the 2FA secret code generation using QR code",
         "firebase/php-jwt": "Use for the jwt connection token system",
         "scheb/2fa-bundle": "Use for the 2FA",
@@ -54,5 +54,8 @@
         "branch-alias": {
             "dev-master": "0.38-dev"
         }
+    },
+    "replace": {
+        "draw/user-bundle": "self.version"
     }
 }
