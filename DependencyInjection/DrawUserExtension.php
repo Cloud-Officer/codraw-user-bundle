@@ -176,7 +176,7 @@ class DrawUserExtension extends Extension implements PrependExtensionInterface
         }
 
         if (!interface_exists(EmailWriterInterface::class)) {
-            throw new RuntimeException('The packages [draw/mailer] is needs to have email writers');
+            throw new RuntimeException('The packages [codraw/mailer] is needs to have email writers');
         }
 
         $definition = new Definition();
